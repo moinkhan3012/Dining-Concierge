@@ -93,6 +93,7 @@ def isvalid_email(email):
 def isvalid_location(location):
     logger.info(f"location: {location}")
     valid_cities = ['manhattan']
+    print(location.lower() in valid_cities)
     return location.lower() in valid_cities
 
 # Function to check if Cuisine Type is valid
@@ -138,13 +139,8 @@ def validate_dining(slots):
 
 
     logger.info(f"{location}, {d_time}, {n_people}, {d_date}, {cuisine}, {email}")
-    if location:
-        if not isvalid_location(location):
+    if location and not isvalid_location(location):
             return build_validation_result(False, 'Location', f'We currently do not support {location} as a valid destination. Manhattan is the hottest spot we serve. Could please enter your preferred location?')
-
-    else:
-        return build_validation_result(False, 'Location', f'We did not quite understand your Location. Manhattan is the hottest spot we serve. Could please enter your preferred location?')
-
 
     if d_date:
         if not isvalid_date(d_date):
