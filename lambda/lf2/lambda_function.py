@@ -36,7 +36,7 @@ def create_or_update_users_past_suggestions(restaurants_list, dinning_details):
     return response
 
 def ses_send_mail(restaurants_list, dinning_details):
-    SENDER = os.environ['SENDER_EMAIL'] #"mk8793@nyu.edu"
+    SENDER = os.environ['SENDER_EMAIL'] 
 
     RECIPIENT = dinning_details['Email']
     
@@ -88,7 +88,7 @@ def ses_send_mail(restaurants_list, dinning_details):
 def sqs_receive_message():
     sqs = boto3.client('sqs')
     result = sqs.receive_message(
-        QueueUrl = os.environ.get('QUEUE_URL'), #'https://sqs.us-east-1.amazonaws.com/533267106200/Dinning_Queue',
+        QueueUrl = os.environ.get('QUEUE_URL'), 
         MaxNumberOfMessages=10,
         MessageAttributeNames=[
             'All'
